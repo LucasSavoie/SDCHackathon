@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st  # Import Streamlit library
 
+# Change the site title name
+st.set_page_config(page_title="EnviroVision", page_icon="🌳")
+
 # Define functions for data loading, transformation, prediction, and plotting
 
 def load_emissions_data(filepath):
