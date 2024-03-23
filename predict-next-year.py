@@ -18,6 +18,13 @@ def transform_data(df):
 
 # train linear regression models and predict emissions for 2024
 # outputs with two columns 'sector' and 'predicted emissions'
+
+def net_emissions(emissions_long_df, offsets_long_df):
+    net_df = emissions_long_df.copy()
+    #net_df.drop('Emissions', axis='columns')
+    net_df['Emissions'] = emissions_long_df['Emissions'] - offsets_long_df['Emissions']
+    return net_df
+
 def train_models_and_predict(df):
     predictions = []
     models = {}  # This should correctly initialize an empty dictionary
@@ -79,13 +86,19 @@ def plot_predictions(predictions):
 
 if __name__ == "__main__":
     # Adjust the filepath as necessary
-    filepath = 'emissions.csv'
-    emissions_df = load_emissions_data(filepath)
-    emissions_long_df = transform_data(emissions_df)
-    predictions, models = train_models_and_predict(emissions_long_df)
+    filepath1 = "emissions.csv"
+    filepath2 = "offsets.csv"
 
-    plot_predictions_with_regression_lines(emissions_long_df, models)
+    emissions_df = load_emissions_data(filepath1)
+    offsets_df = load_emissions_data(filepath2)
+
+    emissions_long_df = transform_data(emissions_df)
+    offsets_long_df = transform_data(offsets_df)
+   
+    net_emissions_df = net_emissions(emissions_long_df, offsets_long_df)
+    predictions, models = train_models_and_predict(net_emissions_df)
     plot_predictions(predictions)
+    plot_predictions_with_regression_lines(net_emissions_df, models)
 
 
 
