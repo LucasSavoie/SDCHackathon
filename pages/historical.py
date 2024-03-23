@@ -8,10 +8,11 @@ ax.hist(arr, bins=20)
 
 
 
-st.title(':evergreen_tree: Irvine Carbon Challenge :evergreen_tree:')
+st.title('Irvine Oil Historical Data')
 
 st.page_link("app.py", label="Home", icon="🏠")
-st.page_link("historical.py", label="Page 1", icon="1️⃣")
+st.page_link("pages/future.py", label="View Future Predictions")
+st.page_link("pages/historical.py", label="View Histroical Data")
 
 
 if st.button('View Chart'):
