@@ -10,7 +10,8 @@ ax.hist(arr, bins=20)
 
 st.title(':evergreen_tree: Irvine Carbon Challenge :evergreen_tree:')
 
-
+st.page_link("app.py", label="Home", icon="🏠")
+st.page_link("historical.py", label="Page 1", icon="1️⃣")
 
 
 if st.button('View Chart'):

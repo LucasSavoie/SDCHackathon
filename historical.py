@@ -8,9 +8,7 @@ ax.hist(arr, bins=20)
 
 
 
-st.title(':evergreen_tree: Irvine Carbon Challenge :evergreen_tree:')
-
-
+st.title(':evergreen_tree: Irvine Oil Historical Data :evergreen_tree:')
 
 
 if st.button('View Chart'):
