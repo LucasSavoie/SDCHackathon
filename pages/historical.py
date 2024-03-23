@@ -93,7 +93,7 @@ def generate_chart_sector(sector, selected_options, start_year, end_year):
 
 st.title('Irvine Oil Historical Data')
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 with col1:
    st.page_link("app.py", label="Home", icon="🏠")
 
@@ -102,6 +102,10 @@ with col2:
 
 with col3:
    st.page_link("pages/historical.py", label="View Histroical Data")
+
+with col4:
+   st.page_link("pages/future_costs.py", label="Predicted Future Costs")
+
 
 options = st.multiselect(
     "Select options", ['Emissions', 'Offset', 'Net'])
