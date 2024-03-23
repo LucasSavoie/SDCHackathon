@@ -98,13 +98,13 @@ if __name__ == "__main__":
         st.page_link("app.py", label="Home", icon="🏠")
 
     with col2:
-        st.page_link("pages/future_costs.py", label="Predicted Future Costs")
+        st.page_link("pages/future_costs.py", label="View Future Predictions")
 
     with col3:
         st.page_link("pages/historical.py", label="View Histroical Data")
 
     with col4:
-        st.page_link("pages/future.py", label="View Future Predictions")
+        st.page_link("pages/future.py", label="Predicted Future Costs")
 
     st.pyplot(plot_predictions(predictions))
 
