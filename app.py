@@ -14,7 +14,7 @@ with cent_co:
 
 st.title('Irvine Oil Carbon Challenge')
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(3)
 with col1:
    st.page_link("app.py", label="Home", icon="🏠")
 
@@ -23,6 +23,9 @@ with col2:
 
 with col3:
    st.page_link("pages/historical.py", label="View Histroical Data")
+
+with col4:
+    st.page_link(label="Predicted Future Costs")
 
 
 
