@@ -20,7 +20,7 @@ st.markdown("""
     #How does EnviroVision solve this problem?
     1. Analyzes previous carbon emission data, providing insights into historical environmental impact.
     2. By leveraging ML and predictive analytics, EnviroVision forecasts future emission trends, aiding Irvine Gasoline in setting achievable carbon neutrality goals.
-    3. Additionally, the EnviroVision offers tools for evaluating the effectiveness of different emission reduction strategies and selecting optimal carbon offsetting options.
+    3. Additionally, EnviroVision offers tools for evaluating the effectiveness of different emission reduction strategies and selecting optimal carbon offsetting options.
 
 """)
 col1, col2, col3, col4 = st.columns(4)
