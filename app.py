@@ -25,7 +25,7 @@ with col3:
    st.page_link("pages/historical.py", label="View Histroical Data")
 
 with col4:
-    st.page_link(label="Predicted Future Costs")
+    st.page_link("future_costs.py", label="Predicted Future Costs")
 
 
 
