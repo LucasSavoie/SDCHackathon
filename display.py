@@ -6,7 +6,7 @@ from matplotlib.widgets import CheckButtons
 df = pd.read_csv("offsets.csv")
 curFigure = 1
 y = [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
-
+legendLoc = "upper right"
 for x in df.index:
     sector = df['Sector'][x]
     data13 = df['2013 (metric tons CO2eq)'][x]
@@ -31,7 +31,8 @@ for x in df.index:
     ax.xaxis.set_major_formatter(ScalarFormatter())
     plt.grid(True, linestyle="-")
     curFigure += 1
-    plt.plot(y, x)
+    plt.plot(y, x, marker="o", color="r", label="Offset")
+    plt.legend(loc=legendLoc)
 df = pd.read_csv("emissions.csv")
 for x in df.index:
     sector = df['Sector'][x]
@@ -57,7 +58,8 @@ for x in df.index:
     ax.xaxis.set_major_formatter(ScalarFormatter())
     plt.grid(True, linestyle="-")
     curFigure += 1
-    plt.plot(y, x)
+    plt.plot(y, x, marker="o", color="b", label="Emissions")
+    plt.legend(loc=legendLoc)
 df1 = pd.read_csv("emissions.csv")
 df2 = pd.read_csv("offsets.csv")
 for x in df.index:
@@ -95,8 +97,8 @@ for x in df.index:
     ax.xaxis.set_major_formatter(ScalarFormatter())
     plt.grid(True, linestyle="-")
     curFigure += 1
-    plt.plot(y, x)
-
+    plt.plot(y, x, label="Net", marker="o", color="g")
+    plt.legend(loc=legendLoc)
 df1 = pd.read_csv("emissions.csv")
 df2 = pd.read_csv("offsets.csv")
 for x in df1.index:
@@ -160,8 +162,8 @@ for x in df1.index:
     ax.xaxis.set_major_formatter(ScalarFormatter())
     plt.grid(True, linestyle="-")
     curFigure += 1
-    plt.plot(y, emissions, label="emissions")
-    plt.plot(y, offsets, label="offsets")
-    plt.plot(y, net, label="net")
-    plt.legend()
+    plt.plot(y, emissions, label="Emissions", color="b", marker="o")
+    plt.plot(y, offsets, label="Offsets", color="r", marker="o")
+    plt.plot(y, net, label="Net", color="g", marker="o")
+    plt.legend(loc=legendLoc)
 plt.show()
