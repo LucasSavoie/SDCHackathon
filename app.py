@@ -5,10 +5,7 @@ import numpy as np
 
 
 # Change the site title name
-st.set_page_config(page_title="EnviroVision")
-
-# Add a thumbnail
-st.set_page_config(page_title="My Streamlit App", page_icon="🌳")
+st.set_page_config(page_title="EnviroVision", page_icon="🌳")
 
 left_co, cent_co,last_co = st.columns(3)
 with cent_co:
