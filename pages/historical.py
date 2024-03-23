@@ -1,6 +1,7 @@
 import streamlit as st
 import matplotlib.pyplot as plt
-import pandas as pd 
+from matplotlib.ticker import MultipleLocator, ScalarFormatter
+import pandas as pd
 import numpy as np
 
 def generate_chart(selected_options, start_year, end_year):
@@ -60,6 +61,35 @@ def generate_chart(selected_options, start_year, end_year):
 
     return fig  # Return the figure object
 
+def generate_chart_sector(sector, selected_options, start_year, end_year):
+    df1 = pd.read_csv("emissions.csv")
+    df2 = pd.read_csv("offsets.csv")
+
+    # Filter dataframes based on selected sector
+    df1_sector = df1[df1['Sector'] == sector]
+    df2_sector = df2[df2['Sector'] == sector]
+
+    y = range(start_year, min(end_year + 1, 2014 + len(df1_sector.columns) - 1))  # Years range from start_year to the end of available data
+
+    net = df1_sector.iloc[:, 1:].values - df2_sector.iloc[:, 1:].values
+    emissions = df1_sector.iloc[:, 1:].values
+    offsets = df2_sector.iloc[:, 1:].values
+
+    plt.figure(figsize=(8, 5))
+    plt.title(sector)
+    plt.xlabel("Year")
+    plt.ylabel("Tons of CO2")
+    plt.grid(True, linestyle="-")
+    if "Emissions" in selected_options:
+        plt.plot(y, emissions[0][:len(y)], label="Emissions", color="b", marker="o")
+    if "Offset" in selected_options: 
+        plt.plot(y, offsets[0][:len(y)], label="Offsets", color="r", marker="o")
+    if "Net" in selected_options:
+        plt.plot(y, net[0][:len(y)], label="Net", color="g", marker="o")
+
+    plt.legend(loc="upper right")
+    
+    return plt.gcf()  # Return the current figure
 
 st.title('Irvine Oil Historical Data')
 
@@ -76,6 +106,11 @@ with col3:
 options = st.multiselect(
     "Select options", ['Emissions', 'Offset', 'Net'])
 
+sector = st.selectbox(
+    'Select a Sector',
+    ('All Sectors', 'Agriculture', 'Aviation', 'Commercial','Energy','Forestry',
+    'Industrial','Marine','Residential','Transportation','Waste'))
+
 # Split the string and extract start and end years
 years_str = st.slider(
     "Select the years",
@@ -83,6 +118,8 @@ years_str = st.slider(
 
 start_year, end_year = map(int, years_str)
 
-fig = generate_chart(options, start_year, end_year)
-
+if sector == 'All Sectors':
+    fig = generate_chart(options, start_year, end_year)
+else:
+    fig = generate_chart_sector(sector, options, start_year, end_year)
 st.pyplot(fig)
