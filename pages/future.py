@@ -10,9 +10,15 @@ ax.hist(arr, bins=20)
 
 st.title('Irvine Oil Future Predictions')
 
-st.page_link("app.py", label="Home", icon="🏠")
-st.page_link("pages/future.py", label="View Future Predictions")
-st.page_link("pages/historical.py", label="View Histroical Data")
+col1, col2, col3 = st.columns(3)
+with col1:
+   st.page_link("app.py", label="Home", icon="🏠")
+
+with col2:
+   st.page_link("pages/future.py", label="View Future Predictions")
+
+with col3:
+   st.page_link("pages/historical.py", label="View Histroical Data")
 
 
 

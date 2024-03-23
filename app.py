@@ -2,19 +2,27 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 
+
+
 arr = np.random.normal(1, 1, size=100)
 fig, ax = plt.subplots()
 ax.hist(arr, bins=20)
 
+left_co, cent_co,last_co = st.columns(3)
+with cent_co:
+    st.image('Irving_Oil.svg.png',width= 150)
 
+st.title('Irvine Oil Carbon Challenge')
 
-st.title(':evergreen_tree: Irvine Carbon Challenge :evergreen_tree:')
+col1, col2, col3 = st.columns(3)
+with col1:
+   st.page_link("app.py", label="Home", icon="🏠")
 
-st.page_link("app.py", label="Home", icon="🏠")
-st.page_link("pages/future.py", label="View Future Predictions")
-st.page_link("pages/historical.py", label="View Histroical Data")
+with col2:
+   st.page_link("pages/future.py", label="View Future Predictions")
 
-if st.button('View Chart'):
-    st.pyplot(fig)
+with col3:
+   st.page_link("pages/historical.py", label="View Histroical Data")
+
 
 
