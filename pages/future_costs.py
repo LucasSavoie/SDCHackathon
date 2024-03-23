@@ -92,6 +92,20 @@ if __name__ == "__main__":
 
     # Display the graphs using Streamlit
     st.title('Predicted Emissions')
+    
+    col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.page_link("app.py", label="Home", icon="🏠")
+
+    with col2:
+        st.page_link("pages/future.py", label="View Future Predictions")
+
+    with col3:
+        st.page_link("pages/historical.py", label="View Histroical Data")
+
+    with col4:
+        st.page_link("pages/future_costs.py", label="Predicted Future Costs")
+
     st.pyplot(plot_predictions(predictions))
 
     st.title('Emissions and Predictions by Sector')
