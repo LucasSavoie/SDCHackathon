@@ -4,9 +4,11 @@ import numpy as np
 
 
 
-arr = np.random.normal(1, 1, size=100)
-fig, ax = plt.subplots()
-ax.hist(arr, bins=20)
+# Change the site title name
+st.set_page_config(page_title="EnviroVision")
+
+# Add a thumbnail
+st.set_page_config(page_title="My Streamlit App", page_icon="🌳")
 
 left_co, cent_co,last_co = st.columns(3)
 with cent_co:
