@@ -4,6 +4,9 @@ from matplotlib.ticker import MultipleLocator, ScalarFormatter
 import pandas as pd
 import numpy as np
 
+# Change the site title name
+st.set_page_config(page_title="EnviroVision", page_icon="🌳")
+
 def generate_chart(selected_options, start_year, end_year):
     df = pd.read_csv('emissions.csv')
     df2 = pd.read_csv('offsets.csv')
