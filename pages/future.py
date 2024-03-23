@@ -20,9 +20,3 @@ with col2:
 with col3:
    st.page_link("pages/historical.py", label="View Histroical Data")
 
-
-
-if st.button('View Chart'):
-    st.pyplot(fig)
-
-
