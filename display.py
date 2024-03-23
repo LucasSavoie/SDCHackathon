@@ -1,8 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MultipleLocator, ScalarFormatter
-import numpy as np
 import pandas as pd
-from matplotlib.widgets import CheckButtons
 df = pd.read_csv("offsets.csv")
 curFigure = 1
 y = [2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
@@ -73,35 +71,5 @@ for x in df1.index:
     plt.plot(y, offsets, label="Offsets", color="r", marker="o")
     plt.plot(y, net, label="Net", color="g", marker="o")
     plt.legend(loc=legendLoc)
-    curFigure += 1
-    plt.figure(curFigure)
-    plt.title(str(sector) + " Net")
-    plt.xlabel("Year")
-    plt.ylabel("Tons of C02")
-    ax = plt.subplot()
-    ax.xaxis.set_major_locator(MultipleLocator(1))
-    ax.xaxis.set_major_formatter(ScalarFormatter())
-    plt.grid(True, linestyle="-")
-    plt.plot(y, net, label="Net", color="g", marker="o")
-    curFigure += 1
-    plt.figure(curFigure)
-    plt.title(str(sector) + " Emissions")
-    plt.xlabel("Year")
-    plt.ylabel("Tons of C02")
-    ax = plt.subplot()
-    ax.xaxis.set_major_locator(MultipleLocator(1))
-    ax.xaxis.set_major_formatter(ScalarFormatter())
-    plt.grid(True, linestyle="-")
-    plt.plot(y, emissions, label="Emissions", color="b", marker="o")
-    curFigure += 1
-    plt.figure(curFigure)
-    plt.title(str(sector) + " Offset")
-    plt.xlabel("Year")
-    plt.ylabel("Tons of C02")
-    ax = plt.subplot()
-    ax.xaxis.set_major_locator(MultipleLocator(1))
-    ax.xaxis.set_major_formatter(ScalarFormatter())
-    plt.grid(True, linestyle="-")
-    plt.plot(y, offsets, label="Offset", color="r", marker="o")
     curFigure += 1
 plt.show()
