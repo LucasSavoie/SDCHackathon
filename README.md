@@ -5,6 +5,7 @@ To view the Website use
   Network URL: http://192.168.239.172:8501
 
 Programs used:
-
+pandas
+matplotlib
 streamlit
 with Annaconda navigator
